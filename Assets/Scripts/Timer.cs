@@ -7,16 +7,11 @@ public class Timer : MonoBehaviour
 {
 
     public TMP_Text chrono;
-    private float timer;
+    private static float timer;
 
-    private float stopTime;
-
-    private bool isRunning;
-// Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    private static string chronoScore;
+    private static string FinalChronoScore;
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,18 +20,19 @@ public class Timer : MonoBehaviour
         var seconds = timer % 60;
         var fraction = (timer * 100) % 60;
         
-        chrono.text = String.Format("{0:00} : {1:00} : {2:000}", minutes, seconds, fraction);
-
+        chronoScore = String.Format("{0:00} : {1:00} : {2:000}", minutes, seconds, fraction);
+        chrono.text = chronoScore;
     }
 
-    void StopTimer()
+    public static void StopChrono()
     {
-        if (isRunning)
-        {
-            stopTime = timer;
-        }
+        FinalChronoScore = chronoScore;
+        FinishScript.SetHighScore(FinalChronoScore);
     }
 
-
+    public static void ResetTimer()
+    {
+        timer = 0f;
+    }
 }
 // https://www.youtube.com/watch?v=Qxwqd2kMHbI Start Stop Reset a Timer

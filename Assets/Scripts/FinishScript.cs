@@ -7,22 +7,25 @@ using UnityEngine.SceneManagement;
 public class FinishScript : MonoBehaviour
 {
     public GameObject Player;
+    public static string HighScore;
 
     public GameObject chrono;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider Player)
     {
-        chrono.
+        Debug.Log("Finito !");
+        Timer.StopChrono();
+
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public static void SetHighScore(string chronoScore)
+    {
+        HighScore = chronoScore;
+    }
+
+    public static string getHighscore()
+    {
+        return HighScore;
     }
 }
