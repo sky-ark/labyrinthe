@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         var seconds = timer % 60;
         var fraction = (timer * 100) % 60;
         
-        chronoScore = String.Format("{0:00} : {1:00} : {2:000}", minutes, seconds, fraction);
+        chronoScore = String.Format("{0:00} : {1:00} : {2:00}", minutes, seconds, fraction);
         chrono.text = chronoScore;
     }
 
